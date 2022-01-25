@@ -2,7 +2,7 @@
 
 
 WDIR=pkg-$RANDOM-$RANDOM
-REPO=https://git@github.com/johnlens/docker_samba_dc.git
+REPO=https://github.com/johnlens/docker_samba_dc.git
 SAVEDIR=$PWD
 
 . ./init_params
@@ -35,9 +35,12 @@ docker cp $TMPDOCKNAME:/usr/local/samba/private private
 docker rm -f $TMPDOCKNAME
 
 cd ../..
-ls
-tar -czvf  ../docker-samba-dc.tar.gz.tar.gz .
+
 echo deleteing myself
+cat  docker-samba-dc/mk_pkg
 rm -f docker-samba-dc/mk_pkg
-ls
+
+tar -czvf  ../docker-samba-dc.tar.gz .
+
 cd $SAVEDIR
+rm -rf  $WDIR
