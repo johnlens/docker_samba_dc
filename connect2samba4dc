@@ -1,0 +1,18 @@
+#!/bin/bash
+
+AFLNM=`readlink -e "$0"`
+WRDIR=`dirname "$AFLNM"`
+SAVEDIR=$PWD
+cd $WRDIR
+. ./init_params
+
+
+
+BASEDIR=$WRDIR
+DOCK_IMAGE=dtcentos/samba_dc:$VER
+
+docker exec -ti \
+samba4dc \
+bash
+
+cd $SAVEDIR

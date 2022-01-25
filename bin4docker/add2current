@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DOMAIN=
+if [ "$DOMAIN" = "" ]
+ then
+   echo Please Setup DOMAIN inside me
+   exit
+fi
+docker exec -ti samba4dc \
+/usr/local/samba/bin/samba-tool domain join $DOMAIN  DC -Ulion@$DOMAIN --realm=$DOMAIN
+
+#/krb5.conf_tmpl $DOMAIN
+#cho y|cp krb5.conf /etc/krb5.conf
+

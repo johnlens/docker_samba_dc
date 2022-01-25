@@ -1,0 +1,50 @@
+FROM centos:8
+
+LABEL Samba4 AD DC engine
+
+#^^^^ Here should be samba version
+
+
+
+COPY install_in_dock_img /root/install_in_dock_img
+
+RUN mkdir -p /root/src
+COPY samba-$SMBVER.tar.gz /root/src/samba-$SMBVER.tar.gz
+
+
+RUN sh /root/install_in_dock_img
+
+
+
+
+
+
+ENV LANGUAGE ru_RU.UTF-8
+ENV LANG ru_RU.UTF-8
+ENV LC_ALL ru_RU.UTF-8
+
+
+
+RUN rm -f /etc/localtime
+RUN ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+
+
+#RUN ln -s /usr/bin/python$PYVER /usr/bin/python
+#RUN cd /root/src&&tar -xzf samba-$SMBVER.tar.gz
+#RUN cd /root/src/samba-$SMBVER&&./configure&&make -j4 &&make install
+#RUN rm -rf /root/src
+
+
+
+RUN echo export PATH=$PATH:/usr/local/samba/bin:/usr/local/samba/sbin>/root/.bashrc
+
+
+
+ENTRYPOINT /usr/local/samba/sbin/samba -i
+
+
+
+VOLUME /usr/local/samba/var
+VOLUME /usr/local/samba/etc
+VOLUME /usr/local/samba/private
+

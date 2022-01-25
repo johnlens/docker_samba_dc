@@ -1,0 +1,30 @@
+#!/bin/bash
+
+AFLNM=`readlink -e "$0"`
+WRDIR=`dirname "$AFLNM"`
+SAVEDIR=$PWD
+cd $WRDIR
+. ./init_params
+
+
+
+BASEDIR=$WRDIR
+DOCK_IMAGE=dtcentos/samba_dc:$VER
+
+docker run -ti \
+-v $BASEDIR/samba_files/etc:/usr/local/samba/etc \
+-v $BASEDIR/samba_files/var:/usr/local/samba/var \
+-v $BASEDIR/samba_files/private:/usr/local/samba/private \
+-v $BASEDIR/etc/resolv.conf:/etc/resolv.conf \
+--cap-add SYS_ADMIN \
+--cap-add DAC_READ_SEARCH \
+--privileged \
+--net=host \
+--name samba4dc \
+--rm \
+$DOCK_IMAGE bash 
+||./mk_dock_image
+
+
+
+cd $SAVEDIR

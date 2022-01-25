@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# reading all *.conf files end sets vars
+
+AFLNM=`readlink -e "$0"`
+WRDIR=`dirname "$AFLNM"`
+
+SAVEDIR=$PWD
+cd $WRDIR
+
+
+
+for PARAM in $(cat *.conf)
+ do
+ declare `echo $PARAM| awk -F "=" '{print $1}'`=`echo $PARAM| awk -F "=" '{print $2}'`
+ done
+
+cd $SAVEDIR
+

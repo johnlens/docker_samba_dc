@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker-src/mk_dock_image
+chmod -x install

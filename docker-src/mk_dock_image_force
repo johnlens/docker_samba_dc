@@ -1,0 +1,28 @@
+#!/bin/bash
+
+AFLNM=`readlink -e "$0"`
+WRDIR=`dirname "$AFLNM"`
+SAVEDIR=$PWD
+cd $WRDIR
+. ./init_params
+
+
+mkdir -p tmp
+
+
+sed "/\LABEL Samba4 AD DC engine/a\ARG SMBVER=$VER\nARG PYVER=$PYVER " Dockerfile.tmpl >tmp/Dockerfile
+
+cp install_in_dock_img tmp/install_in_dock_img
+cd tmp
+
+[ -e samba-$VER.tar.gz ]||wget https://download.samba.org/pub/samba/samba-$VER.tar.gz
+
+DOCK_IMAGE=dtcentos/samba_dc:$VER
+
+docker build . -t $DOCK_IMAGE
+docker push dtcentos/samba_dc:4.15.4
+
+cd ..
+
+
+cd $SAVEDIR

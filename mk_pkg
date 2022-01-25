@@ -1,0 +1,43 @@
+#!/bin/bash
+
+
+WDIR=pkg-$RANDOM-$RANDOM
+REPO=https://git@github.com/johnlens/docker_samba_dc.git
+SAVEDIR=$PWD
+
+. ./init_params
+
+
+mkdir -p $WDIR||exit
+cd $WDIR||exit
+git clone  $REPO||exit
+cd docker_samba_dc||exit
+cd docker-src||exit
+./mk_dock_image_force||exit
+cd ..||exit
+
+rm -rf .git
+
+rm -f .gitignore
+rm -f add2gh
+mkdir samba_files
+
+cd samba_files
+
+DOCK_IMAGE=dtcentos/samba_dc:$VER
+TMPDOCKNAME=mfklewffkergle
+
+docker create -ti --name $TMPDOCKNAME  $DOCK_IMAGE bash
+docker cp $TMPDOCKNAME:/usr/local/samba/etc etc
+docker cp $TMPDOCKNAME:/usr/local/samba/var var
+docker cp $TMPDOCKNAME:/usr/local/samba/private private
+
+docker rm -f $TMPDOCKNAME
+
+cd ../..
+ls
+tar -czvf  ../docker-samba-dc.tar.gz.tar.gz .
+echo deleteing myself
+rm -f docker-samba-dc/mk_pkg
+ls
+cd $SAVEDIR

@@ -1,0 +1,82 @@
+#!/bin/bash
+
+dnf install epel-release  -y
+
+dnf install gnutls-devel  -y
+dnf install openssl-devel  -y
+dnf install libacl-devel  -y
+dnf install krb5-server  -y
+dnf install krb5-libs  -y
+dnf install krb5-workstation  -y
+dnf install bind bind-libs  -y
+dnf install bind-utils  -y
+dnf install perl  -y
+dnf install openldap-devel  -y
+dnf install net-tools  -y
+dnf install pam  -y
+dnf install pam_ldap  -y
+dnf install pam-devel.x86_64  -y
+dnf install perl-Parse-Yapp.noarch  -y
+dnf install jansson-devel  -y
+dnf install  lmdb  -y
+dnf install  lmdb-devel  -y
+dnf install  jansson-devel  -y
+dnf install gcc   -y
+dnf install make  -y
+dnf install wget  -y
+dnf install python38  -y
+dnf install python38-devel  -y
+
+dnf  install dnf-plugins-core -y
+dnf config-manager --set-enabled powertools
+
+
+dnf install  gpgme  -y
+dnf install  gpgme-devel  -y
+dnf install zlib-devel  -y
+dnf install libarchive-devel  -y
+dnf install lmdb-devel  -y
+dnf install dbus  -y
+dnf install dbus-devel  -y
+dnf install rpcgen  -y
+dnf install libtirpc-devel  -y
+dnf install dovecot.x86_64  -y
+dnf install flex  -y
+dnf install  python3-iso8601  -y
+
+
+dnf install bison.x86_64 -y
+dnf install bison-devel.x86_64 -y
+
+
+pip3 install markdown
+pip3 install iso8601
+pip3 install cryptography
+pip3 install pyasn1
+pip3 install dnspython
+
+
+dnf install libicu-devel.x86_64 -y
+dnf install libtasn1-devel.x86_64 -y
+dnf install libtasn1.x86_64 -y
+
+dnf install popt-devel.x86_64 -y
+
+
+
+
+
+dnf install python2 -y
+dnf install python2-devel  -y
+
+dnf install  glibc-langpack-ru.x86_64 -y
+dnf install tzdata.noarch -y
+
+
+ln -s /usr/bin/python$PYVER /usr/bin/python
+cd /root/src&&tar -xzf samba-$SMBVER.tar.gz
+cd /root/src/samba-$SMBVER&&./configure&&make -j4 &&make install
+rm -rf /root/src
+yum clean all
+
+

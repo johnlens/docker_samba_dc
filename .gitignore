@@ -1,0 +1,11 @@
+nonwrk*
+samba-*
+tmp
+-tmp
+install_in_dock_img-
+private*
+var*
+Dockerfile.tmpl.save*
+pkg-*
+docker-samba-dc.tar*
+docker-src/tmp/*
