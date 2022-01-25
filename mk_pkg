@@ -37,8 +37,7 @@ docker rm -f $TMPDOCKNAME
 cd ../..
 
 echo deleteing myself
-cat  docker-samba-dc/mk_pkg
-rm -f docker-samba-dc/mk_pkg
+rm -f docker_samba_dc/mk_pkg
 
 tar -czvf  ../docker-samba-dc.tar.gz .
 
