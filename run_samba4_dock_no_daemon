@@ -11,7 +11,7 @@ cd $WRDIR
 BASEDIR=$WRDIR
 DOCK_IMAGE=dtcentos/samba_dc:$VER
 
-docker run -d \
+docker run -dt \
 -v $BASEDIR/samba_files/etc:/usr/local/samba/etc \
 -v $BASEDIR/samba_files/var:/usr/local/samba/var \
 -v $BASEDIR/samba_files/private:/usr/local/samba/private \
@@ -21,7 +21,7 @@ docker run -d \
 --privileged \
 --net=host \
 --name samba4dc \
---entrypoint ping 127.0.0.1 \
+--entrypoint read \
 --rm \
 $DOCK_IMAGE
 
