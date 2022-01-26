@@ -11,7 +11,7 @@ cd $WRDIR
 BASEDIR=$WRDIR
 DOCK_IMAGE=dtcentos/samba_dc:$VER
 
-docker run -ti \
+docker run -d \
 -v $BASEDIR/samba_files/etc:/usr/local/samba/etc \
 -v $BASEDIR/samba_files/var:/usr/local/samba/var \
 -v $BASEDIR/samba_files/private:/usr/local/samba/private \
@@ -23,9 +23,7 @@ docker run -ti \
 --name samba4dc \
 --entrypoint ping 127.0.0.1 \
 --rm \
-$DOCK_IMAGE 
-||./mk_dock_image
-
+$DOCK_IMAGE
 
 
 cd $SAVEDIR

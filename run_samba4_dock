@@ -22,7 +22,7 @@ docker run -d \
 --net=host \
 --name samba4dc \
 --rm \
-$DOCK_IMAGE  
+$DOCK_IMAGE
 #||./mk_dock_image
 
 
