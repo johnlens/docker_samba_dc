@@ -7,5 +7,4 @@ private*
 var*
 Dockerfile.tmpl.save*
 pkg-*
-docker-samba-dc.tar*
 docker-src/tmp/*

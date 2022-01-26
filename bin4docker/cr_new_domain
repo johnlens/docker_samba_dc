@@ -1,0 +1,24 @@
+#!/bin/bash
+
+DCNAME=
+
+if [ "$DCNAME" = "" ]
+ then
+   echo Please Setup DCNAME inside me
+   exit
+fi
+
+
+
+docker exec -ti samba4dc \
+hostname $DCNAME
+
+
+docker exec -ti samba4dc \
+/usr/local/samba/bin/samba-tool samba-tool domain provision --use-rfc2307 --interactive||echo I\'m need running samba4dc container. Please run run_samba4_dock_no_daemon
+
+docker kill samba4dc
+
+#/krb5.conf_tmpl $DOMAIN
+#cho y|cp krb5.conf /etc/krb5.conf
+

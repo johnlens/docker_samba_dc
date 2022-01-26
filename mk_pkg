@@ -17,6 +17,7 @@ cd docker-src||exit
 echo $PWD
 ls
 
+rm -f pushing_samba4
 sleep 5
 
 cd ..||exit
@@ -49,4 +50,5 @@ tar -czvf  ../docker-samba-dc.tar.gz .
 echo $PWD
 cd $SAVEDIR
 
+./add2gh "adding package"
 rm -rf  $WDIR
