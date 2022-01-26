@@ -21,7 +21,7 @@ docker run -ti \
 --privileged \
 --net=host \
 --name samba4dc \
---entrypoint ping 127.0.0.1
+--entrypoint ping 127.0.0.1 \
 --rm \
 $DOCK_IMAGE 
 ||./mk_dock_image
