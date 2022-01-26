@@ -20,7 +20,7 @@ cd tmp
 DOCK_IMAGE=dtcentos/samba_dc:$VER
 
 docker build . -t $DOCK_IMAGE
-docker push dtcentos/samba_dc:4.15.4
+docker push dtcentos/samba_dc:$VER
 rm -f samba-$VER.tar.gz
 
 cd ..

@@ -1,5 +1,11 @@
 docker образ для samba4
 
-пааметры smb_compile.conf
+параметры smb_compile.conf
 VER - верися samba
 PYVER - Версия python для сборки samba (для старых версий нужна версия2)
+
+mk_pk - создание пакета
+install - из пакета первоначальная настройка
+
+bin4docker/add2current -  скрипт для добавления DC в существующй AD домен (нужно определить соот. параметры $DCNAME - желаемое имя контроллера)
+для функционирования add2current нужно запустить run_samba4_dock_no_daemon
