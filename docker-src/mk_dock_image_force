@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo START mk_dock_image_force
 AFLNM=`readlink -e "$0"`
 WRDIR=`dirname "$AFLNM"`
 SAVEDIR=$PWD
@@ -20,10 +20,12 @@ cd tmp
 DOCK_IMAGE=dtcentos/samba_dc:$VER
 
 docker build . -t $DOCK_IMAGE
-docker push dtcentos/samba_dc:$VER
+#docker push dtcentos/samba_dc:$VER
+[ -e ../pushing_samba4 ]&&../pushing_samba4
+
 rm -f samba-$VER.tar.gz
 
 cd ..
 
-
+echo DONE mk_dock_image_force
 cd $SAVEDIR

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+AFLNM=`readlink -e "$0"`
+WRDIR=`dirname "$AFLNM"`
+SAVEDIR=$PWD
+cd $WRDIR
+. ./init_params
+
+echo pushing dtcentos/samba_dc:$VER
+docker push dtcentos/samba_dc:$VER
+
+
+cd $SAVEDIR

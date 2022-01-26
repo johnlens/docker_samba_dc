@@ -14,6 +14,11 @@ git clone  $REPO||exit
 cd docker_samba_dc||exit
 cd docker-src||exit
 ./mk_dock_image_force||exit
+echo $PWD
+ls
+
+sleep 5
+
 cd ..||exit
 
 rm -rf .git
@@ -41,5 +46,7 @@ rm -f docker_samba_dc/mk_pkg
 
 tar -czvf  ../docker-samba-dc.tar.gz .
 
+echo $PWD
 cd $SAVEDIR
+
 rm -rf  $WDIR
