@@ -15,6 +15,7 @@ docker run -d \
 -v $BASEDIR/samba_files/etc:/usr/local/samba/etc \
 -v $BASEDIR/samba_files/var:/usr/local/samba/var \
 -v $BASEDIR/samba_files/private:/usr/local/samba/private \
+-v $BASEDIR/samba_files/shares:/usr/local/samba/shares \
 -v $BASEDIR/etc/resolv.conf:/etc/resolv.conf \
 --cap-add SYS_ADMIN \
 --cap-add DAC_READ_SEARCH \
@@ -23,7 +24,6 @@ docker run -d \
 --name samba4dc \
 --rm \
 $DOCK_IMAGE
-#||./mk_dock_image
 
 
 
