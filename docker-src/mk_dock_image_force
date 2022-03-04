@@ -19,7 +19,7 @@ cd tmp
 
 DOCK_IMAGE=dtcentos/samba_dc:$VER
 
-docker build . -t $DOCK_IMAGE
+docker build --no-cache . -t  $DOCK_IMAGE
 #docker push dtcentos/samba_dc:$VER
 [ -e ../pushing_samba4 ]&&../pushing_samba4
 

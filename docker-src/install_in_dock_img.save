@@ -26,7 +26,7 @@ dnf install pam  -y
 dnf install pam_ldap  -y
 dnf install pam-devel.x86_64  -y
 dnf install perl-Parse-Yapp.noarch  -y
-dnf install jansson  -y
+dnf install jansson-devel  -y
 dnf install  lmdb  -y
 dnf install  lmdb-devel  -y
 dnf install  jansson-devel  -y
@@ -75,7 +75,7 @@ dnf install popt-devel.x86_64 -y
 
 
 
-dnf install pyhon2 -y
+dnf install python2 -y
 dnf install python2-devel  -y
 
 dnf install  glibc-langpack-ru.x86_64 -y
@@ -86,27 +86,6 @@ ln -s /usr/bin/python$PYVER /usr/bin/python
 cd /root/src&&tar -xzf samba-$SMBVER.tar.gz
 cd /root/src/samba-$SMBVER&&./configure&&make -j4 &&make install
 rm -rf /root/src
-dnf remove  gnutls-devel  -y
-dnf remove openssl-devel  -y
-dnf remove libacl-devel  -y
-dnf remove openldap-devel  -y
-dnf remove pam-devel.x86_64  -y
-dnf remove  lmdb-devel  -y
-dnf remove  jansson-devel  -y
-dnf remove python38-devel  -y
-dnf remove  gpgme-devel  -y
-dnf remove zlib-devel  -y
-dnf remove libarchive-devel  -y
-dnf remove lmdb-devel  -y
-dnf remove dbus-devel  -y
-dnf remove libtirpc-devel  -y
-dnf remove bison-devel.x86_64 -y
-dnf remove libicu-devel.x86_64 -y
-dnf remove libtasn1-devel.x86_64 -y
-dnf remove popt-devel.x86_64 -y
-dnf remove python2-devel  -y
-
-
 yum clean all
 
 
